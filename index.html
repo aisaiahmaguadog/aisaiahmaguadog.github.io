@@ -605,47 +605,8 @@
       transform: none;
     }
 
-    /* ── QR WIDGET ── */
-    .qr-widget {
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      z-index: 200;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 0.6rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.3rem;
-      text-decoration: none;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-
-    .qr-widget:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .qr-widget img {
-      display: block;
-      width: 80px;
-      height: 80px;
-      border-radius: 4px;
-      filter: invert(1);
-    }
-
-    .qr-widget span {
-      font-size: 0.6rem;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      text-transform: uppercase;
-    }
-
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      .qr-widget { display: none; }
       nav { padding: 1rem 1.5rem; }
       .nav-links { gap: 1.2rem; }
       section { padding: 4rem 1.5rem; }
@@ -908,12 +869,6 @@
       <a href="https://github.com/aisaiahmaguadog" target="_blank" class="btn btn-outline">GitHub</a>
     </div>
   </section>
-
-  <!-- QR WIDGET -->
-  <a class="qr-widget" href="https://aisaiahmaguadog.github.io" target="_blank" aria-label="Portfolio QR code">
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=144x144&margin=4&data=https%3A%2F%2Faisaiahmaguadog.github.io" alt="QR code to portfolio" width="80" height="80">
-    <span>Portfolio</span>
-  </a>
 
   <footer>
     <p>© 2026 Aisaiah Maguadog · El Segundo, CA</p>
