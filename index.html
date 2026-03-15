@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aisaiah Maguadog — Computer Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:       #0a1628;
+      --navy-mid:   #0f2040;
+      --navy-light: #1a3a6b;
+      --accent:     #4a9eff;
+      --accent-dim: #2a6ec4;
+      --gold:       #f0b429;
+      --white:      #f0f4ff;
+      --muted:      #8ba4c8;
+      --card-bg:    #0d1e38;
+      --border:     rgba(74, 158, 255, 0.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 4rem;
+      background: rgba(10, 22, 40, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Grid background */
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(74,158,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(74,158,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* Glow blob */
+    .hero-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(74,158,255,0.12) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.9rem;
+      border-radius: 2rem;
+      margin-bottom: 1.8rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    h1 .line2 {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 520px;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.8rem;
+      border-radius: 4px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--navy);
+    }
+
+    .btn-primary:hover {
+      background: #6ab4ff;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--white);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 4rem;
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+      color: var(--white);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 6rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 3rem;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      max-width: 1100px;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .about-text p strong {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    .about-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .detail-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.2rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+
+    .detail-icon {
+      font-size: 1.2rem;
+      width: 2rem;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .detail-info small {
+      display: block;
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .detail-info span {
+      font-size: 0.95rem;
+      color: var(--white);
+      font-weight: 400;
+    }
+
+    /* ── SKILLS ── */
+    #skills { max-width: 1100px; margin: 0 auto; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .skill-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.4rem 1.6rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .skill-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .skill-card-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.6rem;
+    }
+
+    .skill-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── PROJECTS ── */
+    #projects {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .project-card:hover {
+      border-color: rgba(74,158,255,0.4);
+      transform: translateY(-4px);
+    }
+
+    .project-card:hover::before { opacity: 1; }
+
+    .project-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(240,180,41,0.1);
+      border: 1px solid rgba(240,180,41,0.2);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2rem;
+      width: fit-content;
+    }
+
+    .project-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--white);
+      line-height: 1.3;
+    }
+
+    .project-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      padding: 0.25rem 0.65rem;
+      background: rgba(74,158,255,0.08);
+      border: 1px solid rgba(74,158,255,0.15);
+      border-radius: 2rem;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience { max-width: 1100px; margin: 0 auto; }
+
+    .exp-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2rem 2.2rem;
+      margin-bottom: 1.2rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+    }
+
+    .exp-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--white);
+    }
+
+    .exp-company {
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin: 0.3rem 0;
+    }
+
+    .exp-date {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: right;
+      white-space: nowrap;
+      padding-top: 0.2rem;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      margin-top: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .exp-bullets li {
+      font-size: 0.88rem;
+      color: var(--muted);
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .exp-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.75rem;
+    }
+
+    /* ── LEADERSHIP ── */
+    #leadership {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+    }
+
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
+      max-width: 1100px;
+    }
+
+    .lead-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.4rem 1.6rem;
+      transition: border-color 0.2s;
+    }
+
+    .lead-card:hover { border-color: var(--accent); }
+
+    .lead-role {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .lead-org {
+      font-size: 0.82rem;
+      color: var(--accent);
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      text-align: center;
+      padding: 6rem 4rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+      section { padding: 4rem 1.5rem; }
+      #hero { padding: 7rem 1.5rem 3rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-stats { gap: 2rem; }
+      .exp-card { grid-template-columns: 1fr; }
+      .exp-date { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#hero">AM</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <span class="hero-tag">Computer Engineering · LMU '27</span>
+      <h1>
+        Aisaiah<br>
+        <span class="line2">Maguadog</span>
+      </h1>
+      <p class="hero-sub">
+        Building at the intersection of hardware and software — from discrete BJT amplifiers to autonomous robots and FPGA-based CPU design.
+      </p>
+      <div class="hero-ctas">
+        <a href="https://www.linkedin.com/in/aisaiahmaguadog" target="_blank" class="btn btn-primary">LinkedIn</a>
+        <a href="#projects" class="btn btn-outline">View Projects</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Years at Apple</div>
+        </div>
+        <div>
+          <div class="stat-num">3</div>
+          <div class="stat-label">Leadership Roles</div>
+        </div>
+        <div>
+          <div class="stat-num">1st</div>
+          <div class="stat-label">LMU Hackathon</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p class="section-label">About Me</p>
+        <h2>Engineer.<br>Leader.<br>Builder.</h2>
+        <p>I'm a Computer Engineering student at <strong>Loyola Marymount University</strong> with a passion for hardware design, embedded systems, and VLSI. I love working at every level of the stack — from transistor-level circuit design to robot software architecture.</p>
+        <p>As <strong>Controls Team Lead</strong> for LMU's NASA Lunabotics team and <strong>Co-President</strong> of the Robotics club, I'm constantly bridging the gap between theory and real-world systems.</p>
+        <p>Outside of engineering I'm into music production and the NBA.</p>
+      </div>
+      <div class="about-details reveal">
+        <div class="detail-row">
+          <span class="detail-icon">🎓</span>
+          <div class="detail-info">
+            <small>Education</small>
+            <span>B.S. Computer Engineering — LMU, May 2027</span>
+          </div>
+        </div>
+        <div class="detail-row">
+          <span class="detail-icon">📍</span>
+          <div class="detail-info">
+            <small>Location</small>
+            <span>El Segundo, CA</span>
+          </div>
+        </div>
+        <div class="detail-row">
+          <span class="detail-icon">💼</span>
+          <div class="detail-info">
+            <small>Current Role</small>
+            <span>Product Specialist @ Apple</span>
+          </div>
+        </div>
+        <div class="detail-row">
+          <span class="detail-icon">🚀</span>
+          <div class="detail-info">
+            <small>Interests</small>
+            <span>VLSI, Chip Design, Embedded Systems, Robotics</span>
+          </div>
+        </div>
+        <div class="detail-row">
+          <span class="detail-icon">📧</span>
+          <div class="detail-info">
+            <small>Email</small>
+            <span>aisaiah.maguadog@gmail.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label reveal">Technical Skills</p>
+    <h2 class="reveal">What I Work With</h2>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-card-title">Programming Languages</div>
+        <p>C, C++, Python, Verilog, SystemVerilog, VHDL, ARM/MIPS Assembly</p>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-title">Electrical & Digital Systems</div>
+        <p>Circuit design & analysis, digital logic, BJT/FET amplifiers, differential & operational amplifiers, feedback & compensation, FPGA-based FSM design</p>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-title">CPU & Hardware Design</div>
+        <p>MIPS processor design in SystemVerilog/Verilog, ALU & sorting network implementation, datapath & control unit design, Vivado FPGA toolchain</p>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-title">Signals & Systems</div>
+        <p>Laplace/Z-transform, Fourier series/transforms, convolution, LTI system realizations, sampling theorem, amplitude/angle modulation</p>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-title">Data Structures & Algorithms</div>
+        <p>Arrays, linked lists, stacks, queues, heaps, hash tables, trees, graphs; time/space complexity; Python OOP; GitHub version control</p>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-title">Embedded Systems</div>
+        <p>ARM/MIPS assembly, microarchitecture, memory systems, I/O interfacing, microcontroller subroutine design, C for hardware, ROS 2, Ubuntu/Linux</p>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-title">Lab & Simulation Tools</div>
+        <p>Multisim, LabVIEW, oscilloscope, Vivado, signal generators, NVIDIA Jetson Orin Nano</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label reveal">Projects</p>
+    <h2 class="reveal">Things I've Built</h2>
+    <div class="projects-grid">
+
+      <div class="project-card reveal">
+        <span class="project-badge">In Progress · 2025–26</span>
+        <h3>NASA Lunabotics — Autonomous Mining Robot</h3>
+        <p>Controls Team Lead for LMU's NASA Lunabotics entry. Managing combined software/firmware team, overseeing task delegation and project milestones. Integrating NVIDIA Jetson Orin Nano with Teensy microcontroller and setting up ROS 2 on Ubuntu/Linux for robot software architecture.</p>
+        <div class="project-tags">
+          <span class="tag">ROS 2</span>
+          <span class="tag">NVIDIA Jetson</span>
+          <span class="tag">Teensy</span>
+          <span class="tag">Ubuntu/Linux</span>
+          <span class="tag">Team Lead</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <span class="project-badge">Analog IC Design · 2026</span>
+        <h3>Discrete BJT Operational Amplifier</h3>
+        <p>Designed and built a two-stage discrete op-amp using CA3046 NPN transistor array and MPSA-13 Darlington pair, meeting all specs (gain 400–500, Rid ≥ 20kΩ, Ro ≤ 200Ω). Applied Miller compensation for stability and designed an inverting amplifier configuration. Full flow: hand calculations → MultiSim simulation → hardware validation.</p>
+        <div class="project-tags">
+          <span class="tag">CA3046</span>
+          <span class="tag">Darlington</span>
+          <span class="tag">MultiSim</span>
+          <span class="tag">Miller Compensation</span>
+          <span class="tag">Bode Plots</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <span class="project-badge">🏆 1st Place · LMU Hackathon</span>
+        <h3>Interactive Learning Board</h3>
+        <p>Designed an educational analog/digital circuit board demonstrating real-time behavior of bridge rectifiers, resistors, diodes, and capacitors. Implemented Arduino-based measurement system with I²C OLED display. 3D-printed custom enclosure.</p>
+        <div class="project-tags">
+          <span class="tag">Arduino</span>
+          <span class="tag">I²C</span>
+          <span class="tag">OLED</span>
+          <span class="tag">3D Printing</span>
+          <span class="tag">Analog Circuits</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="section-label reveal">Experience</p>
+    <h2 class="reveal">Where I've Worked</h2>
+
+    <div class="exp-card reveal">
+      <div>
+        <div class="exp-title">Product Specialist</div>
+        <div class="exp-company">Apple, Inc. — Manhattan Beach, CA</div>
+        <ul class="exp-bullets">
+          <li>Diagnose and resolve hardware/software issues across macOS, iOS, iPadOS, visionOS, and watchOS using systematic troubleshooting and root-cause analysis</li>
+          <li>Translate complex technical concepts into clear explanations for non-technical users, strengthening cross-functional communication skills</li>
+          <li>Share technical insights with peers to foster teamwork and efficiency; rapidly adapt to evolving Apple technologies and system architectures</li>
+        </ul>
+      </div>
+      <div class="exp-date">Aug 2021 — Present</div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP -->
+  <section id="leadership">
+    <p class="section-label reveal">Leadership</p>
+    <h2 class="reveal">Campus Involvement</h2>
+    <div class="leadership-grid">
+      <div class="lead-card reveal">
+        <div class="lead-role">Co-President & Controls Team Lead</div>
+        <div class="lead-org">LMU Robotics Optimization and Building Organization (ROBO)</div>
+      </div>
+      <div class="lead-card reveal">
+        <div class="lead-role">Outreach/Networking Chair</div>
+        <div class="lead-org">Institute of Electrical and Electronics Engineers (IEEE) — LMU Chapter</div>
+      </div>
+      <div class="lead-card reveal">
+        <div class="lead-role">Collegiate Member</div>
+        <div class="lead-org">National Society of Black Engineers (NSBE)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label reveal">Contact</p>
+    <h2 class="reveal">Let's Connect</h2>
+    <p class="reveal" style="color: var(--muted); max-width: 480px; margin: 0 auto 2rem;">
+      I'm actively looking for internship opportunities in embedded systems, hardware engineering, and VLSI. Feel free to reach out.
+    </p>
+    <div class="contact-links reveal">
+      <a href="mailto:aisaiah.maguadog@gmail.com" class="btn btn-primary">Email Me</a>
+      <a href="https://www.linkedin.com/in/aisaiahmaguadog" target="_blank" class="btn btn-outline">LinkedIn</a>
+      <a href="https://github.com/aisaiahmaguadog" target="_blank" class="btn btn-outline">GitHub</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Aisaiah Maguadog · El Segundo, CA</p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
