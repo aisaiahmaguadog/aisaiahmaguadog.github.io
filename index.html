@@ -635,8 +635,10 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      .hero-photo { display: none; }
-      .hero-inner { grid-template-columns: 1fr; }
+      .hero-inner { grid-template-columns: 1fr; gap: 1.5rem; justify-items: center; }
+      .hero-content { width: 100%; }
+      .hero-photo { order: -1; }
+      .headshot { width: 160px; height: 160px; border-radius: 50%; object-position: center top; }
       nav { padding: 1rem 1.5rem; }
       .nav-links { gap: 1.2rem; }
       section { padding: 4rem 1.5rem; }
