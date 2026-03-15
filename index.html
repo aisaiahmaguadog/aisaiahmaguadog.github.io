@@ -134,10 +134,36 @@
       pointer-events: none;
     }
 
-    .hero-content {
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 5rem;
+      align-items: center;
+      width: 100%;
+      max-width: 1100px;
       position: relative;
       z-index: 1;
-      max-width: 800px;
+    }
+
+    .hero-content {
+      min-width: 0;
+    }
+
+    .hero-photo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .headshot {
+      width: 400px;
+      max-width: 100%;
+      border-radius: 16px;
+      border: 2px solid rgba(74, 158, 255, 0.3);
+      box-shadow: 0 0 40px rgba(74, 158, 255, 0.15);
+      display: block;
+      animation: fadeUp 0.6s 0.5s ease both;
     }
 
     .hero-tag {
@@ -607,6 +633,8 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
+      .hero-photo { display: none; }
+      .hero-inner { grid-template-columns: 1fr; }
       nav { padding: 1rem 1.5rem; }
       .nav-links { gap: 1.2rem; }
       section { padding: 4rem 1.5rem; }
@@ -636,6 +664,7 @@
   <!-- HERO -->
   <section id="hero">
     <div class="hero-glow"></div>
+    <div class="hero-inner">
     <div class="hero-content">
       <span class="hero-tag">Computer Engineering · LMU '27</span>
       <h1>
@@ -664,6 +693,10 @@
           <div class="stat-label">LMU Hackathon</div>
         </div>
       </div>
+    </div>
+    <div class="hero-photo">
+      <img src="headshot.jpg" alt="Aisaiah Maguadog" class="headshot">
+    </div>
     </div>
   </section>
 
