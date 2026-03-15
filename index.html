@@ -639,8 +639,8 @@
     @media (max-width: 768px) {
       .hero-inner { grid-template-columns: 1fr; gap: 1.5rem; justify-items: center; }
       .hero-content { width: 100%; }
-      .hero-photo { order: -1; }
-      .headshot { width: 160px; height: 160px; border-radius: 50%; object-position: center 2%; }
+      .hero-photo { order: -1; width: 160px; height: 160px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(74,158,255,0.3); box-shadow: 0 0 40px rgba(74,158,255,0.15); flex-shrink: 0; }
+      .headshot { width: 160px; height: 160px; border-radius: 0; border: none; box-shadow: none; object-position: center 15%; transform: scale(1.9); transform-origin: center 18%; }
       .hero-ctas { flex-direction: column; width: 100%; align-items: stretch; }
       .btn { justify-content: center; }
       nav { padding: 0.8rem 1rem; flex-wrap: wrap; }
