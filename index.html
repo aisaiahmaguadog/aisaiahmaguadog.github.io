@@ -84,6 +84,22 @@
 
     .nav-links a:hover { color: var(--white); }
 
+    .nav-resume {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-family: 'DM Sans', sans-serif;
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.75rem;
+      border-radius: 4px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .nav-resume:hover {
+      color: var(--white);
+      border-color: var(--accent);
+    }
+
     /* ── HERO ── */
     #hero {
       min-height: 100vh;
@@ -141,8 +157,10 @@
       font-family: 'Syne', sans-serif;
       font-weight: 800;
       font-size: clamp(3rem, 7vw, 5.5rem);
-      line-height: 1.05;
+      line-height: 1.18;
       letter-spacing: -0.02em;
+      padding-bottom: 0.12em;
+      overflow: visible;
       animation: fadeUp 0.6s 0.1s ease both;
     }
 
@@ -528,6 +546,25 @@
       color: var(--accent);
     }
 
+    .lead-ig {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .lead-ig:hover { color: var(--white); }
+
+    .lead-ig svg {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+    }
+
     /* ── CONTACT ── */
     #contact {
       text-align: center;
@@ -568,8 +605,47 @@
       transform: none;
     }
 
+    /* ── QR WIDGET ── */
+    .qr-widget {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 200;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.6rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .qr-widget:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .qr-widget img {
+      display: block;
+      width: 80px;
+      height: 80px;
+      border-radius: 4px;
+      filter: invert(1);
+    }
+
+    .qr-widget span {
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
+      .qr-widget { display: none; }
       nav { padding: 1rem 1.5rem; }
       .nav-links { gap: 1.2rem; }
       section { padding: 4rem 1.5rem; }
@@ -592,6 +668,7 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="resume.pdf" download class="nav-resume">↓ Resume</a></li>
     </ul>
   </nav>
 
@@ -790,10 +867,26 @@
       <div class="lead-card reveal">
         <div class="lead-role">Co-President & Controls Team Lead</div>
         <div class="lead-org">LMU Robotics Optimization and Building Organization (ROBO)</div>
+        <a href="https://www.instagram.com/lmurobotics" target="_blank" class="lead-ig">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+          </svg>
+          @lmurobotics
+        </a>
       </div>
       <div class="lead-card reveal">
         <div class="lead-role">Outreach/Networking Chair</div>
         <div class="lead-org">Institute of Electrical and Electronics Engineers (IEEE) — LMU Chapter</div>
+        <a href="https://www.instagram.com/lmuieee" target="_blank" class="lead-ig">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+          </svg>
+          @lmuieee
+        </a>
       </div>
       <div class="lead-card reveal">
         <div class="lead-role">Collegiate Member</div>
@@ -815,6 +908,12 @@
       <a href="https://github.com/aisaiahmaguadog" target="_blank" class="btn btn-outline">GitHub</a>
     </div>
   </section>
+
+  <!-- QR WIDGET -->
+  <a class="qr-widget" href="https://aisaiahmaguadog.github.io" target="_blank" aria-label="Portfolio QR code">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=144x144&margin=4&data=https%3A%2F%2Faisaiahmaguadog.github.io" alt="QR code to portfolio" width="80" height="80">
+    <span>Portfolio</span>
+  </a>
 
   <footer>
     <p>© 2026 Aisaiah Maguadog · El Segundo, CA</p>
