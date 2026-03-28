@@ -61,10 +61,12 @@ function runSlotAnimations() {
 // Hamburger menu
 const hamburger = document.querySelector('.nav-hamburger');
 const navLinksList = document.querySelector('.nav-links');
+const navEl = document.querySelector('nav');
 
 hamburger.addEventListener('click', () => {
   const open = navLinksList.classList.toggle('open');
   hamburger.classList.toggle('open', open);
+  navEl.classList.toggle('menu-open', open);
   hamburger.setAttribute('aria-expanded', String(open));
   document.body.style.overflow = open ? 'hidden' : '';
 });
@@ -73,6 +75,7 @@ navLinksList.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     navLinksList.classList.remove('open');
     hamburger.classList.remove('open');
+    navEl.classList.remove('menu-open');
     hamburger.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   });
