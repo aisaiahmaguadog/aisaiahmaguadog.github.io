@@ -274,6 +274,7 @@ h2 {
   gap: 4rem;
   align-items: start;
   max-width: 1100px;
+  margin: 0 auto;
 }
 
 .about-text p {
@@ -378,6 +379,7 @@ h2 {
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.5rem;
   max-width: 1100px;
+  margin: 0 auto;
 }
 
 .project-card {
@@ -524,6 +526,7 @@ h2 {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.25rem;
   max-width: 1100px;
+  margin: 0 auto;
 }
 
 .lead-card {
