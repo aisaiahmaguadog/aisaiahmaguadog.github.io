@@ -32,7 +32,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.2rem 4rem;
+  padding: 1.25rem 4rem;
   background: rgba(10, 22, 40, 0.96);
   border-bottom: 1px solid var(--border);
 }
@@ -184,6 +184,7 @@ h1 .line2 {
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.8rem;
+  min-height: 44px;
   border-radius: 4px;
   font-family: 'DM Sans', sans-serif;
   font-size: 0.9rem;
@@ -244,7 +245,7 @@ section {
 }
 
 .section-label {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--accent);
@@ -278,6 +279,7 @@ h2 {
   color: var(--muted);
   margin-bottom: 1rem;
   font-size: 1rem;
+  max-width: 65ch;
 }
 
 .about-text p strong {
@@ -295,7 +297,7 @@ h2 {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1rem 1.2rem;
+  padding: 1rem 1.25rem;
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 6px;
@@ -310,7 +312,7 @@ h2 {
 
 .detail-info small {
   display: block;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -328,14 +330,14 @@ h2 {
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.2rem;
+  gap: 1.25rem;
 }
 
 .skill-card {
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 1.4rem 1.6rem;
+  padding: 1.5rem;
   transition: border-color 0.2s, transform 0.2s;
 }
 
@@ -359,6 +361,10 @@ h2 {
   line-height: 1.6;
 }
 
+@media (max-width: 768px) {
+  .skill-card p { font-size: 1rem; }
+}
+
 /* ── PROJECTS ── */
 #projects {
   background: var(--navy-mid);
@@ -377,7 +383,7 @@ h2 {
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 1.8rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -398,14 +404,14 @@ h2 {
 
 .project-card:hover {
   border-color: rgba(74,158,255,0.4);
-  transform: translateY(-4px);
+  transform: translateY(-4px) scale(1.02);
 }
 
 .project-card:hover::before { opacity: 1; }
 
 .project-badge {
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--gold);
@@ -429,6 +435,7 @@ h2 {
   color: var(--muted);
   line-height: 1.65;
   flex: 1;
+  max-width: 65ch;
 }
 
 .project-tags {
@@ -438,7 +445,7 @@ h2 {
 }
 
 .tag {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   padding: 0.25rem 0.65rem;
   background: rgba(74,158,255,0.08);
   border: 1px solid rgba(74,158,255,0.15);
@@ -455,7 +462,7 @@ h2 {
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 2rem 2.2rem;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.25rem;
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 1rem;
@@ -491,7 +498,7 @@ h2 {
 }
 
 .exp-bullets li {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   color: var(--muted);
   padding-left: 1rem;
   position: relative;
@@ -514,7 +521,7 @@ h2 {
 .leadership-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.2rem;
+  gap: 1.25rem;
   max-width: 1100px;
 }
 
@@ -522,7 +529,7 @@ h2 {
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 1.4rem 1.6rem;
+  padding: 1.5rem;
   transition: border-color 0.2s;
 }
 
@@ -569,7 +576,7 @@ h2 {
 .contact-links {
   display: flex;
   justify-content: center;
-  gap: 1.2rem;
+  gap: 1.25rem;
   margin-top: 2rem;
   flex-wrap: wrap;
 }
@@ -658,6 +665,16 @@ footer {
 .nav-links a.active { color: var(--white); }
 
 
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   .hero-inner { grid-template-columns: 1fr; gap: 1.5rem; justify-items: center; }
@@ -679,4 +696,6 @@ footer {
   .hero-stats { gap: 2rem; }
   .exp-card { grid-template-columns: 1fr; }
   .exp-date { text-align: left; }
+  .project-card p { font-size: 1rem; }
+  .exp-bullets li { font-size: 1rem; }
 }
