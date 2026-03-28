@@ -1,3 +1,92 @@
+// Splash screen + page entrance
+const splash = document.getElementById('splash');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (reducedMotion) {
+  splash.remove();
+  document.body.classList.remove('loading');
+  runSlotAnimations();
+} else {
+  setTimeout(() => {
+    splash.style.transform = 'translateY(-100%)';
+    setTimeout(() => {
+      splash.remove();
+      document.body.classList.remove('loading');
+      setTimeout(runSlotAnimations, 350);
+    }, 650);
+  }, 1050);
+}
+
+// Scramble number animation
+function runSlotAnimations() {
+  document.querySelectorAll('.stat-num[data-count]').forEach((el, elIndex) => {
+    const target = el.dataset.count;
+    const suffix = el.dataset.suffix || '';
+    const digits = target.split('');
+
+    if (reducedMotion) {
+      el.textContent = target + suffix;
+      el.style.opacity = '1';
+      return;
+    }
+
+    // Set content before revealing to prevent layout shift
+    el.textContent = digits.map(() => '0').join('') + suffix;
+
+    setTimeout(() => {
+      el.style.opacity = '1';
+
+      const duration = 550;
+      const interval = 45;
+      const totalSteps = Math.round(duration / interval);
+      let step = 0;
+
+      const tick = setInterval(() => {
+        step++;
+        const progress = step / totalSteps;
+        const scrambled = digits.map((ch, i) => {
+          return progress >= (i + 1) / digits.length ? ch : Math.floor(Math.random() * 10);
+        }).join('');
+        el.textContent = scrambled + suffix;
+
+        if (step >= totalSteps) {
+          clearInterval(tick);
+          el.textContent = target + suffix;
+        }
+      }, interval);
+    }, elIndex * 150);
+  });
+}
+
+// Hamburger menu
+const hamburger = document.querySelector('.nav-hamburger');
+const navLinksList = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+  const open = navLinksList.classList.toggle('open');
+  hamburger.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', String(open));
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+
+navLinksList.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinksList.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  });
+});
+
+// Scroll to top
+const scrollTopBtn = document.getElementById('scroll-top');
+window.addEventListener('scroll', () => {
+  scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+}, { passive: true });
+scrollTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
 // Scroll reveal with position-based stagger
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
