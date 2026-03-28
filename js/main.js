@@ -143,3 +143,32 @@ function type() {
   setTimeout(type, deleting ? 40 : 85);
 }
 type();
+
+// Contact form — async submit
+const contactForm = document.querySelector('.contact-form');
+contactForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = contactForm.querySelector('.form-submit');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  try {
+    const res = await fetch(contactForm.action, {
+      method: 'POST',
+      body: new FormData(contactForm),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (res.ok) {
+      contactForm.innerHTML = '<p class="form-success">Message sent! I\'ll get back to you soon.</p>';
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+      contactForm.insertAdjacentHTML('beforeend', '<p class="form-error">Something went wrong. Try emailing me directly.</p>');
+    }
+  } catch {
+    btn.disabled = false;
+    btn.textContent = 'Send Message';
+    contactForm.insertAdjacentHTML('beforeend', '<p class="form-error">Something went wrong. Try emailing me directly.</p>');
+  }
+});
