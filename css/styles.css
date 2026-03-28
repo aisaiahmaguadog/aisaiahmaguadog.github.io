@@ -26,7 +26,7 @@ body {
   background: var(--navy);
   color: var(--white);
   font-family: 'DM Sans', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.7;
   overflow-x: hidden;
 }
@@ -168,7 +168,10 @@ h1 {
 }
 
 h1 .line2 {
-  color: var(--accent);
+  background: linear-gradient(135deg, var(--accent) 0%, #a5d8ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-sub {
@@ -203,12 +206,12 @@ h1 .line2 {
 }
 
 .btn-primary {
-  background: var(--accent);
+  background: linear-gradient(135deg, #4a9eff 0%, #74c0fc 100%);
   color: var(--navy);
 }
 
 .btn-primary:hover {
-  background: #6ab4ff;
+  background: linear-gradient(135deg, #6ab4ff 0%, #89d4ff 100%);
   transform: translateY(-2px);
 }
 
@@ -237,7 +240,7 @@ h1 .line2 {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
   font-size: 2rem;
-  color: var(--white);
+  color: var(--gold);
 }
 
 .stat-label {
@@ -277,7 +280,7 @@ h2 {
 
 /* ── ABOUT ── */
 #about {
-  background: var(--navy-mid);
+  background: linear-gradient(160deg, #132244 0%, var(--navy-mid) 40%);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
@@ -360,6 +363,7 @@ h2 {
 .skill-card:hover {
   border-color: var(--accent);
   transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(74, 158, 255, 0.12);
 }
 
 .skill-card-title {
@@ -383,7 +387,7 @@ h2 {
 
 /* ── PROJECTS ── */
 #projects {
-  background: var(--navy-mid);
+  background: linear-gradient(160deg, #132244 0%, var(--navy-mid) 40%);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
@@ -423,6 +427,7 @@ h2 {
 .project-card:hover {
   border-color: rgba(74,158,255,0.4);
   transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(74, 158, 255, 0.15);
 }
 
 .project-card:hover::before { opacity: 1; }
@@ -534,7 +539,7 @@ h2 {
 
 /* ── LEADERSHIP ── */
 #leadership {
-  background: var(--navy-mid);
+  background: linear-gradient(160deg, #132244 0%, var(--navy-mid) 40%);
   border-top: 1px solid var(--border);
 }
 
@@ -552,7 +557,7 @@ h2 {
   transition: border-color 0.2s;
 }
 
-.lead-card:hover { border-color: var(--accent); }
+.lead-card:hover { border-color: var(--accent); box-shadow: 0 8px 28px rgba(74, 158, 255, 0.12); }
 
 .lead-role {
   font-family: 'Space Grotesk', sans-serif;
