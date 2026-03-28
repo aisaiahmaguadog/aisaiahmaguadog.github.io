@@ -13,6 +13,13 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+:focus:not(:focus-visible) { outline: none; }
+
 html { scroll-behavior: smooth; }
 
 body {
@@ -81,7 +88,7 @@ nav {
 
 /* ── HERO ── */
 #hero {
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   padding: 8rem 4rem 4rem;
@@ -133,7 +140,7 @@ nav {
   border: 2px solid rgba(74, 158, 255, 0.3);
   box-shadow: 0 0 40px rgba(74, 158, 255, 0.15);
   display: block;
-  animation: fadeUp 0.6s 0.5s ease both;
+  animation: fadeUp 0.6s 0.5s ease-out both;
 }
 
 .hero-tag {
@@ -146,7 +153,7 @@ nav {
   padding: 0.35rem 0.9rem;
   border-radius: 2rem;
   margin-bottom: 1.8rem;
-  animation: fadeUp 0.6s ease both;
+  animation: fadeUp 0.6s ease-out both;
 }
 
 h1 {
@@ -157,7 +164,7 @@ h1 {
   letter-spacing: -0.02em;
   padding-bottom: 0.12em;
   overflow: visible;
-  animation: fadeUp 0.6s 0.1s ease both;
+  animation: fadeUp 0.6s 0.1s ease-out both;
 }
 
 h1 .line2 {
@@ -169,7 +176,7 @@ h1 .line2 {
   font-size: 1.1rem;
   color: var(--muted);
   max-width: 520px;
-  animation: fadeUp 0.6s 0.2s ease both;
+  animation: fadeUp 0.6s 0.2s ease-out both;
 }
 
 .hero-ctas {
@@ -177,7 +184,7 @@ h1 .line2 {
   gap: 1rem;
   margin-top: 2.5rem;
   flex-wrap: wrap;
-  animation: fadeUp 0.6s 0.3s ease both;
+  animation: fadeUp 0.6s 0.3s ease-out both;
 }
 
 .btn {
@@ -205,6 +212,8 @@ h1 .line2 {
   transform: translateY(-2px);
 }
 
+.btn:active { transform: translateY(0) scale(0.97); opacity: 0.88; }
+
 .btn-outline {
   border: 1px solid var(--border);
   color: var(--white);
@@ -221,7 +230,7 @@ h1 .line2 {
   display: flex;
   gap: 3rem;
   margin-top: 4rem;
-  animation: fadeUp 0.6s 0.4s ease both;
+  animation: fadeUp 0.6s 0.4s ease-out both;
 }
 
 .stat-num {
@@ -396,7 +405,10 @@ h2 {
   transition: border-color 0.2s, transform 0.2s;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
+
+.project-card:active { transform: translateY(-2px) scale(1.01); }
 
 .project-card::before {
   content: '';
@@ -416,7 +428,9 @@ h2 {
 .project-card:hover::before { opacity: 1; }
 
 .project-badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -605,7 +619,7 @@ footer {
 .reveal {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .reveal.visible {
@@ -632,7 +646,7 @@ footer {
   color: var(--muted);
   margin-top: 0.8rem;
   font-family: 'Space Grotesk', sans-serif;
-  animation: fadeUp 0.6s 0.15s ease both;
+  animation: fadeUp 0.6s 0.15s ease-out both;
 }
 .typed-cursor {
   color: var(--accent);
