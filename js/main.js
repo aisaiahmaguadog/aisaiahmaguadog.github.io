@@ -1,9 +1,12 @@
-// Scroll reveal
+// Scroll reveal with position-based stagger
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
+  entries.forEach(entry => {
     if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      const siblings = Array.from(entry.target.parentElement.children);
+      const idx = siblings.indexOf(entry.target);
+      const delay = Math.min(idx, 6) * 60;
+      setTimeout(() => entry.target.classList.add('visible'), delay);
       observer.unobserve(entry.target);
     }
   });
