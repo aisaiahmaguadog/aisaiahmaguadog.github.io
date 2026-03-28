@@ -245,6 +245,11 @@ section {
   z-index: 1;
 }
 
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
 .section-label {
   font-size: 0.75rem;
   letter-spacing: 0.25em;
@@ -378,8 +383,6 @@ h2 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.5rem;
-  max-width: 1100px;
-  margin: 0 auto;
 }
 
 .project-card {
@@ -525,8 +528,6 @@ h2 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.25rem;
-  max-width: 1100px;
-  margin: 0 auto;
 }
 
 .lead-card {
