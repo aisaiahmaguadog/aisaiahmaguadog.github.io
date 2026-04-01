@@ -1,3 +1,7 @@
+// Force scroll to top on load
+history.scrollRestoration = 'manual';
+window.scrollTo(0, 0);
+
 // Splash screen + page entrance
 const splash = document.getElementById('splash');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
