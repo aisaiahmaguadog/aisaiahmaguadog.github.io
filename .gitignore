@@ -1,0 +1,11 @@
+# macOS / local tooling
+.DS_Store
+.claude/
+.git-rewrite/
+
+# Private sources. The editable résumé lives outside this repo (../resume.tex);
+# only the compiled resume.pdf is published. Original photos carry EXIF/GPS:
+# publish only the stripped derivatives in img/.
+*.tex
+main_revised.pdf
+HeadshotV2.jpg
