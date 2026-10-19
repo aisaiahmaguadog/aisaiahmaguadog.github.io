@@ -373,6 +373,7 @@ h1, h2, h3 { font-weight: 600; line-height: 1.25; color: var(--text); }
 .project-artifact h4 { font-size: 1rem; font-weight: 600; }
 .project-artifact p { margin-top: var(--s1); color: var(--text-2); font-size: 0.9375rem; }
 .project-artifact .artifact-note { color: var(--text-3); font-size: 0.875rem; }
+.project-artifact .artifact-label { margin: 0 0 var(--s1); color: var(--text-3); font-size: 0.8125rem; }
 .artifact-link {
   display: inline-flex;
   align-items: center;

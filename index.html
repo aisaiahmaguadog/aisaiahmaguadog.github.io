@@ -24,7 +24,7 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='8' fill='%230b1220'/><text x='32' y='42' font-family='Helvetica,Arial,sans-serif' font-weight='700' font-size='26' fill='%23e8edf5' text-anchor='middle'>AM</text></svg>">
   <link rel="preload" as="image" type="image/webp" href="img/headshot-480.webp" imagesrcset="img/headshot-480.webp 480w, img/headshot-800.webp 800w" imagesizes="(max-width: 720px) 112px, (max-width: 960px) 240px, 280px">
   <script>document.documentElement.classList.add('js');</script>
-  <link rel="stylesheet" href="css/styles.css?v=7">
+  <link rel="stylesheet" href="css/styles.css?v=8">
 </head>
 <body>
 
@@ -159,6 +159,14 @@
             <li>Wrote interrupt-driven C applications: push-button ISRs drive a binary counter on the LEDs, with UART output for serial-terminal debugging.</li>
             <li>Generated FPGA bitstreams, exported the hardware platform to Xilinx SDK, and validated each design on ZedBoard hardware.</li>
           </ul>
+          <div class="project-artifact">
+            <div>
+              <p class="artifact-label">Hardware artifact</p>
+              <h4>Vivado IP Integrator block design</h4>
+              <p>Zynq PS → AXI interconnect → memory-mapped switch and button GPIO peripherals</p>
+            </div>
+            <a class="artifact-link" href="img/zynq-vivado-block-design.webp" target="_blank" rel="noopener noreferrer">View block design<span aria-hidden="true">&nbsp;→</span><span class="visually-hidden"> (Vivado IP Integrator block design showing the Zynq processing system, AXI interconnect, and AXI GPIO peripherals for switches and buttons, opens in a new tab)</span></a>
+          </div>
         </article>
 
         <article class="project">
@@ -179,6 +187,15 @@
             <li>Applied Miller compensation and designed a 20 V/V inverting amplifier stage.</li>
             <li>Characterized gain, bandwidth, CMRR, input/output impedance, and clipping behavior, and compared the results against Multisim simulation.</li>
           </ul>
+          <div class="project-artifact">
+            <div>
+              <p class="artifact-label">Technical report</p>
+              <h4>Feedback &amp; amplifier compensation</h4>
+              <p>Bode analysis, Miller compensation, measured impedance, oscilloscope validation, and circuit schematics</p>
+              <p class="artifact-note">Co-authored with Max Bispham</p>
+            </div>
+            <a class="artifact-link" href="projects/bjt-opamp/feedback-amplifier-compensation-report.pdf" target="_blank" rel="noopener noreferrer">View report<span aria-hidden="true">&nbsp;→</span><span class="visually-hidden"> (Feedback and Amplifier Compensation, technical report co-authored with Max Bispham, PDF, opens in a new tab)</span></a>
+          </div>
         </article>
 
       </div>
@@ -190,7 +207,7 @@
       <dl class="skills">
         <div class="skill-row">
           <dt>Languages &amp; HDL</dt>
-          <dd>SystemVerilog · Verilog · VHDL · C · C++ · Python · MATLAB · ARM Assembly · MIPS Assembly</dd>
+          <dd>SystemVerilog · C · Python · VHDL · Verilog · ARM Assembly · MIPS Assembly · C++</dd>
         </div>
         <div class="skill-row">
           <dt>RTL &amp; Verification</dt>
@@ -198,7 +215,7 @@
         </div>
         <div class="skill-row">
           <dt>Embedded Systems &amp; SoC</dt>
-          <dd>Zynq SoC · AXI · AXI GPIO · Memory-Mapped I/O · Interrupt-Driven I/O · UART · SPI · ESP32</dd>
+          <dd>Zynq SoC · AXI · AXI GPIO · Memory-Mapped I/O · Interrupt-Driven I/O · UART · SPI</dd>
         </div>
         <div class="skill-row">
           <dt>Platforms &amp; Tools</dt>
