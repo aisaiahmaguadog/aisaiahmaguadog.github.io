@@ -24,7 +24,7 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='8' fill='%230b1220'/><text x='32' y='42' font-family='Helvetica,Arial,sans-serif' font-weight='700' font-size='26' fill='%23e8edf5' text-anchor='middle'>AM</text></svg>">
   <link rel="preload" as="image" type="image/webp" href="img/headshot-480.webp" imagesrcset="img/headshot-480.webp 480w, img/headshot-800.webp 800w" imagesizes="(max-width: 720px) 112px, (max-width: 960px) 240px, 280px">
   <script>document.documentElement.classList.add('js');</script>
-  <link rel="stylesheet" href="css/styles.css?v=8">
+  <link rel="stylesheet" href="css/styles.css?v=9">
 </head>
 <body>
 
@@ -129,7 +129,7 @@
             <li>Wrote a Python golden reference model and used it to generate the 64 complex <code>Q1.15</code> decay coefficients stored in the ROM.</li>
             <li>Developed SystemVerilog testbenches to verify complex arithmetic, fixed-point behavior, and synchronous memory timing; used waveform analysis to debug module interfaces in preparation for top-level FSM integration.</li>
           </ul>
-          <p class="project-links"><a href="https://github.com/aisaiahmaguadog/swift-rtl" target="_blank" rel="noopener noreferrer">Source on GitHub<span class="visually-hidden"> (SWIFT RTL)</span></a></p>
+          <p class="project-links"><a class="source-link" href="https://github.com/aisaiahmaguadog/swift-rtl" target="_blank" rel="noopener noreferrer">Source on GitHub<span aria-hidden="true">&nbsp;→</span><span class="visually-hidden"> (SWIFT RTL)</span></a></p>
         </article>
 
         <article class="project">
@@ -144,7 +144,10 @@
             <li>Integrated the processor datapath and control path, including PC update, instruction decode, ALU operand selection, branch logic, and write-back.</li>
             <li>Implemented and verified R-type (<code>add</code>, <code>sub</code>, <code>and</code>, <code>or</code>, <code>slt</code>), <code>addi</code>, <code>lw</code>, <code>sw</code>, and <code>beq</code> using module-level testbenches and a top-level testbench running a hand-assembled MIPS program.</li>
           </ul>
-          <p class="project-links">Verification artifact: Register-file simulation, 8/8 checks passed · <a href="img/mips-regfile-waveform.webp" target="_blank" rel="noopener noreferrer">View waveform<span class="visually-hidden"> (register-file testbench, opens full-size image)</span></a></p>
+          <div class="project-links">
+            <p>Verification artifact: Register-file simulation, 8/8 checks passed</p>
+            <a class="artifact-link" href="img/mips-regfile-waveform.webp" target="_blank" rel="noopener noreferrer">View waveform<span aria-hidden="true">&nbsp;→</span><span class="visually-hidden"> (register-file testbench, opens full-size image)</span></a>
+          </div>
         </article>
 
         <article class="project">
