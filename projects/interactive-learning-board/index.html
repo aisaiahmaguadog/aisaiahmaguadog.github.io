@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aisaiah Maguadog | Interactive Learning Board Simulator</title>
+  <meta name="description" content="Browser reconstruction of the Interactive Learning Board's 128×64 OLED interface, challenge logic, LEDs, and buzzer, rebuilt from the original Arduino firmware with simulated electrical inputs.">
+  <link rel="canonical" href="https://aisaiahmaguadog.github.io/projects/interactive-learning-board/">
+  <meta name="theme-color" content="#0b1220">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aisaiahmaguadog.github.io/projects/interactive-learning-board/">
+  <meta property="og:title" content="Interactive Learning Board Simulator">
+  <meta property="og:description" content="Browser reconstruction of the original hackathon hardware interface. Electrical inputs are simulated in-browser.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='8' fill='%230b1220'/><text x='32' y='42' font-family='Helvetica,Arial,sans-serif' font-weight='700' font-size='26' fill='%23e8edf5' text-anchor='middle'>AM</text></svg>">
+  <link rel="stylesheet" href="simulator.css?v=1">
+</head>
+<body>
+  <header class="sim-header">
+    <div class="wrap">
+      <a class="back-link" href="../../" aria-label="Back to Aisaiah Maguadog's portfolio">← Portfolio</a>
+    </div>
+  </header>
+
+  <main class="wrap" id="main">
+    <div class="intro">
+      <p class="eyebrow">1st Place, LMU NSBE Hackathon</p>
+      <h1>Interactive Learning Board</h1>
+      <p class="lede">Browser reconstruction of the original hackathon hardware interface.</p>
+    </div>
+
+    <div class="layout">
+      <section class="board" id="board" tabindex="0" aria-labelledby="board-title" aria-describedby="board-hint">
+        <h2 class="visually-hidden" id="board-title">Simulated board</h2>
+
+        <div class="oled-module">
+          <div class="oled-fit">
+            <canvas id="oled" width="128" height="64" role="img" aria-label="OLED display" aria-describedby="oled-text"></canvas>
+            <noscript>
+              <img src="../../img/interactive-learning-board-oled-interface.webp" width="1832" height="438" alt="Three reconstructed 128 by 64 OLED screens from the Interactive Learning Board: the component-selection menu, Level 1 resistor target screen, and capacitor discharge timing screen.">
+              <p class="noscript-note">The simulator needs JavaScript. Shown above: a static reconstruction of three screens.</p>
+            </noscript>
+          </div>
+          <p class="module-label">SSD1306 · 128×64</p>
+        </div>
+        <p class="visually-hidden" id="oled-text"></p>
+
+        <div class="board-io">
+          <ul class="leds" aria-label="LEDs">
+            <li class="led led-green" id="led-green"><span class="led-dot" aria-hidden="true"></span>Green LED: <span id="led-green-state">off</span></li>
+            <li class="led led-red" id="led-red"><span class="led-dot" aria-hidden="true"></span>Red LED: <span id="led-red-state">off</span></li>
+          </ul>
+
+          <div class="joystick" role="group" aria-label="Joystick">
+            <button class="joy joy-up" id="joy-up" type="button" aria-label="Joystick up">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="joy joy-select" id="joy-select" type="button">Select</button>
+            <button class="joy joy-down" id="joy-down" type="button" aria-label="Joystick down">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <p class="kbd-hint" id="board-hint"><kbd>↑</kbd> <kbd>↓</kbd> Navigate · <kbd>Enter</kbd> Select</p>
+      </section>
+
+      <div class="side">
+        <section class="panel" aria-labelledby="inputs-title">
+          <p class="eyebrow">Simulated input</p>
+          <h2 id="inputs-title">Analog pin A2</h2>
+          <p class="panel-note">All three challenges read the same analog input, A2.</p>
+
+          <div class="field">
+            <label for="a2">Simulated measured voltage</label>
+            <div class="slider-row">
+              <button class="step" id="a2-dec" type="button" aria-label="Decrease by one ADC step">−</button>
+              <input type="range" id="a2" min="0" max="1023" step="1" value="0">
+              <button class="step" id="a2-inc" type="button" aria-label="Increase by one ADC step">+</button>
+            </div>
+            <output class="readout" id="a2-out" for="a2">0.00 V · ADC 0</output>
+          </div>
+
+          <fieldset class="field">
+            <legend>Capacitor challenge</legend>
+            <label for="tau">Ideal RC discharge time constant, τ</label>
+            <input type="range" id="tau" min="20" max="1000" step="10" value="300">
+            <output class="readout" id="tau-out" for="tau">300 ms</output>
+            <button class="btn" id="rc-connect" type="button" aria-pressed="false">Connect charged capacitor</button>
+            <p class="panel-note">Drives A2 with an ideal 5.00 V exponential discharge.</p>
+          </fieldset>
+        </section>
+
+        <section class="panel" aria-labelledby="controls-title">
+          <h2 id="controls-title">Controls</h2>
+          <p class="panel-note"><kbd>↑</kbd> <kbd>↓</kbd> move the joystick and <kbd>Enter</kbd> presses it while the board has focus.</p>
+          <div class="control-row">
+            <button class="btn" id="sound" type="button" aria-pressed="true">Sound: On</button>
+            <button class="btn" id="reset" type="button">Reset simulator</button>
+          </div>
+        </section>
+
+        <section class="notes" aria-label="About this simulator">
+          <p>Interface and state logic reconstructed from the original Arduino firmware. Electrical measurements are simulated in-browser.</p>
+          <p>Browser audio reproduces the firmware's tone frequencies and timing; the original piezo buzzer had its own acoustic response.</p>
+          <p><a class="source-link" href="https://github.com/aisaiahmaguadog/interactive-learning-board" target="_blank" rel="noopener noreferrer">View source on GitHub<span aria-hidden="true">&nbsp;→</span><span class="visually-hidden"> (Interactive Learning Board firmware, opens in a new tab)</span></a></p>
+        </section>
+      </div>
+    </div>
+
+    <p class="visually-hidden" id="sim-status" aria-live="polite"></p>
+  </main>
+
+  <script src="simulator.js?v=1" defer></script>
+</body>
+</html>
