@@ -20,11 +20,28 @@
   <meta name="twitter:title" content="Aisaiah Maguadog | Computer Engineering">
   <meta name="twitter:description" content="Computer Engineering senior at Loyola Marymount University focused on RTL design, embedded systems, computer architecture, and FPGA/SoC development.">
   <meta name="twitter:image" content="https://aisaiahmaguadog.github.io/og-image.jpg">
+  <meta name="twitter:image:alt" content="Aisaiah Maguadog, Computer Engineering, Loyola Marymount University">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Aisaiah Maguadog",
+    "url": "https://aisaiahmaguadog.github.io/",
+    "sameAs": [
+      "https://github.com/aisaiahmaguadog",
+      "https://www.linkedin.com/in/aisaiahmaguadog"
+    ],
+    "affiliation": {
+      "@type": "CollegeOrUniversity",
+      "name": "Loyola Marymount University"
+    }
+  }
+  </script>
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='8' fill='%230b1220'/><text x='32' y='42' font-family='Helvetica,Arial,sans-serif' font-weight='700' font-size='26' fill='%23e8edf5' text-anchor='middle'>AM</text></svg>">
   <link rel="preload" as="image" type="image/webp" href="img/headshot-480.webp" imagesrcset="img/headshot-480.webp 480w, img/headshot-800.webp 800w" imagesizes="(max-width: 720px) 112px, (max-width: 960px) 240px, 280px">
   <script>document.documentElement.classList.add('js');</script>
-  <link rel="stylesheet" href="css/styles.css?v=9">
+  <link rel="stylesheet" href="css/styles.css?v=10">
 </head>
 <body>
 
@@ -123,13 +140,13 @@
             <p class="project-date">Spring 2026</p>
           </header>
           <p class="project-meta">SystemVerilog · RTL · Fixed-Point · Verification</p>
-          <p class="project-context">SystemVerilog RTL implementation of SWIFT (Sliding Window Infinite Fourier Transform), a recursive frequency-tracking algorithm targeting a ZedBoard (Zynq XC7Z020).</p>
+          <p class="project-context">SystemVerilog RTL building blocks for SWIFT (Sliding Window Infinite Fourier Transform), a recursive frequency-tracking algorithm targeting a ZedBoard (Zynq XC7Z020).</p>
           <ul class="project-points">
             <li>Designed fixed-point datapath modules: a combinational <code>Q1.15 × Q9.14</code> complex multiplier, a 64-bin synchronous state RAM, and a coefficient ROM initialized with <code>$readmemh</code>.</li>
             <li>Wrote a Python golden reference model and used it to generate the 64 complex <code>Q1.15</code> decay coefficients stored in the ROM.</li>
             <li>Developed SystemVerilog testbenches to verify complex arithmetic, fixed-point behavior, and synchronous memory timing; used waveform analysis to debug module interfaces in preparation for top-level FSM integration.</li>
           </ul>
-          <p class="project-links"><a class="source-link" href="https://github.com/aisaiahmaguadog/swift-rtl" target="_blank" rel="noopener noreferrer">Source on GitHub<span aria-hidden="true">&nbsp;→</span><span class="visually-hidden"> (SWIFT RTL)</span></a></p>
+          <p class="project-links"><a class="source-link" href="https://github.com/aisaiahmaguadog/swift-rtl" target="_blank" rel="noopener noreferrer">Source on GitHub<span aria-hidden="true">&nbsp;→</span><span class="visually-hidden"> (SWIFT RTL, opens in a new tab)</span></a></p>
         </article>
 
         <article class="project">
@@ -146,8 +163,8 @@
           </ul>
           <div class="project-links">
             <p>Verification artifact: Register-file simulation, 8/8 checks passed</p>
-            <a class="source-link" href="https://github.com/aisaiahmaguadog/single-cycle-mips-cpu" target="_blank" rel="noopener noreferrer">Source on GitHub<span aria-hidden="true">&nbsp;→</span><span class="visually-hidden"> (single-cycle MIPS CPU)</span></a>
-            <a class="artifact-link" href="img/mips-regfile-waveform.webp" target="_blank" rel="noopener noreferrer">View waveform<span aria-hidden="true">&nbsp;→</span><span class="visually-hidden"> (register-file testbench, opens full-size image)</span></a>
+            <a class="source-link" href="https://github.com/aisaiahmaguadog/single-cycle-mips-cpu" target="_blank" rel="noopener noreferrer">Source on GitHub<span aria-hidden="true">&nbsp;→</span><span class="visually-hidden"> (single-cycle MIPS CPU, opens in a new tab)</span></a>
+            <a class="artifact-link" href="img/mips-regfile-waveform.webp" target="_blank" rel="noopener noreferrer">View waveform<span aria-hidden="true">&nbsp;→</span><span class="visually-hidden"> (register-file testbench waveform, opens in a new tab)</span></a>
           </div>
         </article>
 
@@ -257,7 +274,7 @@
       <ul class="roles">
         <li class="role">
           <p class="role-title"><strong>1st Place, NSBE Hackathon</strong> · National Society of Black Engineers</p>
-          <p class="role-desc">Arduino-based circuit-education board built in 8 hours. <a href="https://github.com/aisaiahmaguadog/interactive-learning-board" target="_blank" rel="noopener noreferrer">Source on GitHub<span class="visually-hidden"> (Interactive Learning Board)</span></a></p>
+          <p class="role-desc">Arduino-based circuit-education board built in 8 hours. <a href="https://github.com/aisaiahmaguadog/interactive-learning-board" target="_blank" rel="noopener noreferrer">Source on GitHub<span aria-hidden="true">&nbsp;→</span><span class="visually-hidden"> (Interactive Learning Board, opens in a new tab)</span></a></p>
         </li>
         <li class="role">
           <p class="role-title"><strong>Vice President</strong> · IEEE LMU Student Branch</p>
@@ -295,7 +312,7 @@
     <!-- CONTACT -->
     <section class="section container" id="contact" aria-labelledby="contact-title">
       <h2 id="contact-title">Contact</h2>
-      <p class="contact-intro">Email is the fastest way to reach me. I'm looking for 2027 internship, co-op, and full-time new-graduate roles in RTL design, verification, FPGA/SoC, embedded systems, and hardware engineering. Based in El Segundo, CA.</p>
+      <p class="contact-intro">Email is the fastest way to reach me. I'm looking for 2027 internship, co-op, and full-time new-graduate roles in RTL design, verification, FPGA/SoC, embedded systems, and hardware engineering. Based in Los Angeles, CA.</p>
       <ul class="contact-list">
         <li><span class="contact-label">Email</span><a href="mailto:aisaiah.maguadog@gmail.com">aisaiah.maguadog@gmail.com</a></li>
         <li><span class="contact-label">LinkedIn</span><a href="https://www.linkedin.com/in/aisaiahmaguadog" target="_blank" rel="noopener noreferrer">linkedin.com/in/aisaiahmaguadog</a></li>
