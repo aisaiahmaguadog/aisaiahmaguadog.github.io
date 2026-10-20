@@ -12,7 +12,7 @@
   <meta property="og:title" content="Interactive Learning Board Simulator">
   <meta property="og:description" content="Browser reconstruction of the original hackathon hardware interface. Electrical inputs are simulated in-browser.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='8' fill='%230b1220'/><text x='32' y='42' font-family='Helvetica,Arial,sans-serif' font-weight='700' font-size='26' fill='%23e8edf5' text-anchor='middle'>AM</text></svg>">
-  <link rel="stylesheet" href="simulator.css?v=1">
+  <link rel="stylesheet" href="simulator.css?v=2">
 </head>
 <body>
   <header class="sim-header">
@@ -25,7 +25,7 @@
     <div class="intro">
       <p class="eyebrow">1st Place, LMU NSBE Hackathon</p>
       <h1>Interactive Learning Board</h1>
-      <p class="lede">Browser reconstruction of the original hackathon hardware interface.</p>
+      <p class="lede">Browser reconstruction of the original embedded interface and challenge logic from the LMU NSBE Hackathon project.</p>
     </div>
 
     <div class="layout">
@@ -100,12 +100,26 @@
         </section>
 
         <section class="notes" aria-label="About this simulator">
-          <p>Interface and state logic reconstructed from the original Arduino firmware. Electrical measurements are simulated in-browser.</p>
           <p>Browser audio reproduces the firmware's tone frequencies and timing; the original piezo buzzer had its own acoustic response.</p>
           <p><a class="source-link" href="https://github.com/aisaiahmaguadog/interactive-learning-board" target="_blank" rel="noopener noreferrer">View source on GitHub<span aria-hidden="true">&nbsp;→</span><span class="visually-hidden"> (Interactive Learning Board firmware, opens in a new tab)</span></a></p>
         </section>
       </div>
     </div>
+
+    <section class="prototype" aria-labelledby="prototype-title">
+      <h2 id="prototype-title">Physical prototype</h2>
+      <div class="prototype-body">
+        <figure class="prototype-figure">
+          <img src="../../img/interactive-learning-board-prototype.webp" width="948" height="1685" loading="lazy" decoding="async" alt="Physical Interactive Learning Board prototype with breadboard, OLED display, Arduino hardware, wiring, and joystick during testing.">
+          <figcaption>Physical prototype during hackathon testing. The photographed Level 1 screen differs slightly from the version reconstructed from the repository firmware.</figcaption>
+        </figure>
+        <div class="tech-note">
+          <h3>Technical note</h3>
+          <p>The OLED renderer, menu behavior, challenge state logic, LED states, and buzzer events are reconstructed from the original Arduino firmware. Electrical measurements are simulated in the browser.</p>
+          <p>The simulator follows the published Arduino firmware. The prototype photo shows a slightly different Level 1 layout, suggesting the photographed hardware may have been running an earlier sketch revision.</p>
+        </div>
+      </div>
+    </section>
 
     <p class="visually-hidden" id="sim-status" aria-live="polite"></p>
   </main>
